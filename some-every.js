@@ -6,7 +6,11 @@ Examples:
     hasOddNumber([2,2,2,2,2,4]) // false
 */
 
-function hasOddNumber(arr) {}
+function hasOddNumber(arr) {
+    return arr.some(function(num) {
+        return num % 2 === 1;
+    });
+}
 
 /*
 Write a function called hasAZero which accepts a number and returns true if that number contains at least one zero. Otherwise, the function should return false
@@ -16,7 +20,12 @@ Examples:
     hasAZero(1212121) // false
 */
 
-function hasAZero(num) {}
+function hasAZero(num) {
+    const numArray = Array.from(num.toString());
+    return numArray.some(function(digit) {
+        return digit === '0';
+    });
+}
 
 /*
 Write a function called hasOnlyOddNumbers which accepts an array and returns true if every single number in the array is odd. If any of the values in the array are not odd, the function should return false. 
@@ -26,7 +35,11 @@ Examples:
     hasOnlyOddNumbers([1,2,3,5,7]) // false
 */
 
-function hasOnlyOddNumbers(arr) {}
+function hasOnlyOddNumbers(arr) {
+    return arr.every(function(num) {
+        return num % 2 === 1;
+    });
+}
 
 /*
 Write a function called hasNoDuplicates which accepts an array and returns true if there are no duplicate values (more than one element in the array that has the same value as another). If there are any duplicates, the function should return false.
@@ -36,7 +49,16 @@ Examples:
     hasNoDuplicates([1,2,3]) // true
 */
 
-function hasNoDuplicates(arr) {}
+function hasNoDuplicates(arr) {
+    return arr.every(function(value, idx, arrayAgain) {
+        for (let i = idx + 1; i < arrayAgain.length; i++) {
+            if (value === arrayAgain[i]) {
+                return false;
+            }
+        }
+        return true;
+    });
+}
 
 /*
 Write a function called hasCertainKey which accepts an array of objects and a key, and returns true if every single object in the array contains that key. Otherwise it should return false.
